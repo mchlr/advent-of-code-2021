@@ -69,12 +69,9 @@ for line in parsed:
     if sub_chunks > 1:
         lineMissed.pop()
 
-
-    missing_scores.append(calc_score(lineMissed))
-
+    score = calc_score(lineMissed)
+    if score > 0:
+        missing_scores.append(score)
 
 missing_scores = sorted(missing_scores)
-
-print(missing_scores)
-
 print(f"Solution: {missing_scores[int((len(missing_scores)-1) / 2)]}")
