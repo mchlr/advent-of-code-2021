@@ -45,18 +45,17 @@ def shoot(velocity, position):
         if is_in_area(pos):
             return max(y_values)
         if has_overshot(pos):
-            return -1
+            return -3.141592654
 
-# Grid search best trajectory
-highest_point = -999999
-best_velo = []
 
-for i in tqdm(range(151)):
-    for j in range(151):
+# Grid search all trajectory
+possible_velo = []
+
+for i in tqdm(range(-200, 200, 1)):
+    for j in range(-200, 200, 1):
         y = shoot([i,j], [0,0])
 
-        if y > highest_point:        
-            highest_point = y
-            best_velo = [i,j]
+        if y != -3.141592654:        
+            possible_velo.append([i,j])
 
-print(f"Solution: {highest_point} /w velocity {best_velo}")
+print(f"Solution: {len(possible_velo)}")
